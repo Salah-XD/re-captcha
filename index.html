@@ -1,40 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="#" id="lform">
-        <div class="g-recaptcha" data-sitekey="6LcxRN8nAAAAAOTO3HAeQFaLNDhOw0RyUrawP41h"></div>
-        <button type="submit">Submit</button>
-    </form>
-</body>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-    document.getElementById('lform').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        // Get the reCAPTCHA response token
-        var recaptchaResponse = grecaptcha.getResponse();
-
-        if (!recaptchaResponse) {
-            alert('Please complete the reCAPTCHA.');
-        } else {
-            // Perform your form submission logic here
-            // You can use AJAX to send the form data to your server
-        }
-    });
-
-</script>
-
-</html> -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +9,43 @@
 
 <body>
     <form action="#" id="lform">
-        <!-- reCAPTCHA v3 -->
+        <!-- reCAPTCHA v2 -->
+        <div class="g-recaptcha" data-sitekey="6LcxRN8nAAAAAOTO3HAeQFaLNDhOw0RyUrawP41h"></div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.getElementById('lform').addEventListener('submit', function (event) {
+            var recaptchaResponse = grecaptcha.getResponse();
+
+            if (!recaptchaResponse) {
+                event.preventDefault();  // Prevent form submission if reCAPTCHA is not completed
+                alert('Please complete the reCAPTCHA.');
+            } else {
+                // Proceed with your form submission logic
+                // You can use AJAX to send the form data to your server
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- =======================v3==================== -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" id="lform">
+        
         <input type="hidden" id="recaptchaResponse" name="recaptchaResponse">
         <button type="submit">Submit</button>
     </form>
@@ -67,4 +66,4 @@
     </script>
 </body>
 
-</html>
+</html> -->
