@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" id="lform">
+        <div class="g-recaptcha" data-sitekey="6LcxRN8nAAAAAOTO3HAeQFaLNDhOw0RyUrawP41h"></div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    document.getElementById('lform').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Get the reCAPTCHA response token
+        var recaptchaResponse = grecaptcha.getResponse();
+
+        if (!recaptchaResponse) {
+            alert('Please complete the reCAPTCHA.');
+        } else {
+            // Perform your form submission logic here
+            // You can use AJAX to send the form data to your server
+        }
+    });
+
+</script>
+
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" id="lform">
+        <!-- reCAPTCHA v3 -->
+        <input type="hidden" id="recaptchaResponse" name="recaptchaResponse">
+        <button type="submit">Submit</button>
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcxRN8nAAAAAOTO3HAeQFaLNDhOw0RyUrawP41h"></script>
+    <script>
+        document.getElementById('lform').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6LcxRN8nAAAAAOTO3HAeQFaLNDhOw0RyUrawP41h', { action: 'submit' }).then(function (token) {
+                    // Set the reCAPTCHA response token in the hidden input field
+                    document.getElementById('recaptchaResponse').value = token;
+                    // Proceed with your form submission logic
+                    // You can use AJAX to send the form data to your server
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
